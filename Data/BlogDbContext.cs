@@ -4,9 +4,9 @@ namespace BlogGraphqlApp.Data;
 
 public class BlogDbContext : DbContext
 {
-    public BlogDbContext(DbContextOptions<BlogDbContext> options):base(options)
+    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
     {
-        
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

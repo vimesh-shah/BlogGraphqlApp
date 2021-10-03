@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using HotChocolate.AspNetCore.Authorization;
 
 namespace BlogGraphqlApp.Data;
 
@@ -19,7 +20,7 @@ public class Post
 
     [Required]
     public DateTime CreatedAt { get; set; }
-    
+
     [Required]
     public User? CreatedBy { get; set; }
 }

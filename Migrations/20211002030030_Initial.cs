@@ -30,6 +30,7 @@ namespace BlogGraphqlApp.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Password = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Firstname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Lastname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Age = table.Column<short>(type: "smallint", nullable: false),

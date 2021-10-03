@@ -22,7 +22,7 @@ namespace BlogGraphqlApp.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GraphqlApp1.Data.Post", b =>
+            modelBuilder.Entity("BlogGraphqlApp.Data.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace BlogGraphqlApp.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("GraphqlApp1.Data.Tag", b =>
+            modelBuilder.Entity("BlogGraphqlApp.Data.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,7 +74,7 @@ namespace BlogGraphqlApp.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("GraphqlApp1.Data.User", b =>
+            modelBuilder.Entity("BlogGraphqlApp.Data.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,6 +97,11 @@ namespace BlogGraphqlApp.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -126,9 +131,9 @@ namespace BlogGraphqlApp.Migrations
                     b.ToTable("PostTag");
                 });
 
-            modelBuilder.Entity("GraphqlApp1.Data.Post", b =>
+            modelBuilder.Entity("BlogGraphqlApp.Data.Post", b =>
                 {
-                    b.HasOne("GraphqlApp1.Data.User", "CreatedBy")
+                    b.HasOne("BlogGraphqlApp.Data.User", "CreatedBy")
                         .WithMany("Posts")
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -139,20 +144,20 @@ namespace BlogGraphqlApp.Migrations
 
             modelBuilder.Entity("PostTag", b =>
                 {
-                    b.HasOne("GraphqlApp1.Data.Post", null)
+                    b.HasOne("BlogGraphqlApp.Data.Post", null)
                         .WithMany()
                         .HasForeignKey("PostsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GraphqlApp1.Data.Tag", null)
+                    b.HasOne("BlogGraphqlApp.Data.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("GraphqlApp1.Data.User", b =>
+            modelBuilder.Entity("BlogGraphqlApp.Data.User", b =>
                 {
                     b.Navigation("Posts");
                 });

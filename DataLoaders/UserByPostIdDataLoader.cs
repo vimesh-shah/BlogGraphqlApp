@@ -22,7 +22,7 @@ public class UserByPostIdDataLoader : BatchDataLoader<int, User>
         CancellationToken cancellationToken)
     {
         await using var dbContext = await _contextFactory.CreateDbContextAsync();
-        
+
         var posts = await dbContext.Posts
             .AsNoTracking()
             .Where(x => keys.Contains(x.Id))
@@ -30,7 +30,7 @@ public class UserByPostIdDataLoader : BatchDataLoader<int, User>
             .ToListAsync(cancellationToken);
 
         var dict = new Dictionary<int, User>();
-        
+
         foreach (var post in posts)
         {
             dict.Add(post.Id, post.CreatedBy);

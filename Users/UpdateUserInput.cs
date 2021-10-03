@@ -2,12 +2,8 @@ using BlogGraphqlApp.Data;
 
 namespace BlogGraphqlApp.Users;
 
-public class AddUserInput
+public class UpdateUserInput
 {
-    public string? Username { get; set; }
-
-    public string? Password { get; set; }
-
     public string? Firstname { get; set; }
 
     public string? Lastname { get; set; }
